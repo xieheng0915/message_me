@@ -36,3 +36,63 @@ when open a new terminal, maybe need to reset the default ruby version:
 ```
 
 **sqlite is no longer available for ruby-2.5.x, so I have to switch to ruby-2.7.2, the purpose is to use rails-5, ruby's version is not so strict.**  
+
+### Use semantic ui
+- add semantic ui: 
+Go to [semantic-ui github repo](https://github.com/doabit/semantic-ui-sass) and copy the configuration to gemfile and add jquery as well
+```
+gem 'semantic-ui-sass'
+gem 'jquery-rails'
+```
+save and go to terminal, run "bundle install"  
+
+- add css and js
+create custom.css.scss under app/assets/stylesheet/ 
+```
+@import 'semantic-ui';
+```
+and in app/assets/javascript/application.js add require jquery and semantic ui
+```
+//= require rails-ujs
+//= require jquery
+//= require activestorage
+//= require turbolinks
+//= require semantic-ui
+//= require_tree .
+```
+the sequence of required dependencies is very important, otherwise doesn't work.  
+
+- Add nav bar
+In semantic ui website, find the nav bar needed, copy the source code and add to views/layouts/application.html.erb
+```
+<div class="ui small inverted menu">
+  <div class="ui container">
+    <a class="item">
+      Home
+    </a>
+    <a class="item">
+      Messages
+    </a>
+    <div class="right menu">
+      <div class="ui dropdown item">
+        Language <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item">English</a>
+          <a class="item">Russian</a>
+          <a class="item">Spanish</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ui primary button">Sign Up</div>
+      </div>
+    </div>
+  </div>  
+</div>
+<div class="ui container">
+  <%= yield %>
+</div>
+```
+"ui small inverted menu": the nav bar mode and inverted indicate color inverting. added "ui container" to add indent and adjust the layout.  
+
+
+
