@@ -115,3 +115,30 @@ Before adding turbolink, the dropdown link is not clickable, after loading turbo
     <title>MessageMe</title>
     <%= favicon_link_tag asset_path('favicon.ico') %>
   ```
+
+- build up chatroom homepage
+  - Add icon header by Semantic UI: component/header -> icon header -> select "Frirend" icon, copy code to index.html.erb, modify icon size, icon change from friend to coffee icon.  
+  ```
+  <h4 class="ui center aligned medium icon header">
+  <i class="circular coffee icon"></i>
+  Say something
+  </h4>
+  ```
+  - add icon color: search icon->variation->color, if can't find edit the url as this:  (https://semantic-ui.com/elements/icon.html#colored), copy the color's code accordingly.
+  ```
+  <i class="circular orange coffee icon"></i>
+  ```  
+
+  - Add inverted menu: semantic UI -> Collections -> menu -> find out inverted menu:
+  - Add feed(chat message style) Views->feed->size
+  - Create 2 column grids to separate feed and inverted menu by "ui.two.column.grid", or refer to Semantic ui -> Collections -> Grid   
+  ```
+  <div class="ui two column grid">
+    <div class="twelve wide column">
+      ...//message feed
+    </div>
+    <div class="four wide column">
+      ...//inverted menu
+    </div>
+  </div>
+  ```
