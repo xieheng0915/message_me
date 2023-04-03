@@ -92,7 +92,26 @@ In semantic ui website, find the nav bar needed, copy the source code and add to
   <%= yield %>
 </div>
 ```
-"ui small inverted menu": the nav bar mode and inverted indicate color inverting. added "ui container" to add indent and adjust the layout.  
+"ui small inverted menu": the nav bar mode and inverted indicate color inverting. added "ui container" to add indent and adjust the layout.  By adding container, you can adjust the layout.   
 
+- Add turbolink:  
+**Turbolinks** is a flexible and lightweight JavaScript library aimed to make your navigation through webpages faster, in app/assets/javascripts/applicaiton.js, add code as below. (Be aware we're using rails5, so javascript folder is under assets)  
+```
+//= require turbolinks
+//= require semantic-ui
+//= require_tree .
 
+$(document).on('turbolinks:load', function() {
+  $('.ui.dropdown').dropdown();
+})
+```
+Before adding turbolink, the dropdown link is not clickable, after loading turbolink, it works.   
 
+- Edit navigation menu and move to new created _navigation.html.erb (omit)  
+- Add favicon using 
+  - find out resource:  [awesome favicon](https://gauger.io/fonticon/) select coffee, and set up color to red with black background, then download, add to app/assets/images
+  - Add to source, in application.html.erb, add under <title>, asset_path can be omitted if only on icon exist. 
+  ```
+    <title>MessageMe</title>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+  ```
